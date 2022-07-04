@@ -1,4 +1,5 @@
 import os
+import json
 
 
 class create_German_Excerpt:
@@ -8,8 +9,8 @@ class create_German_Excerpt:
      self.parts_of_speech = parts_of_speech
      self.user_input = []
      self.text = None
-  @classmethod
-  def from_json(cls, name, path=None):
+@classmethod
+def from_json(cls, name, path=None):
     if not path:
       path = cls.path
     fpath = os.path.join(path, name)
@@ -18,18 +19,18 @@ class create_German_Excerpt:
     excerpt = cls(**data)
     return excerpt
 
-  def user_answers(self):
+def user_answers(self):
     print("Please provide the following words: ")
     for desc in self.parts_of_speech:
       ui = input(desc + "")
       self.user_input.append(ui)
     return self.user_input
 
-  def build_text(self):
+def build_text(self):
     self.text = self.template.format(*self.user_input)
     return self.text
 
-  def display_text(self):
+def display_text(self):
     print(text)
 
 def select_template():
@@ -47,11 +48,3 @@ excerpt.display_text()
 
 
     
-def main():
-  mad_lib_mhd_aid = """So _verbpastperfekt/ Rual und Tristan die _nounplural/ richtig in Angriff, wie es ihnen zukam. 
-  Sie beschafften _noun2plural/ und _noun3plural/ innerhalb von dreissig Tagen, die die dreissig Ritter tragen sollten, 
-  die der _adjektiv/ Tristan sich als Gefaehrten nehmen wollte. Wer mich nun nach ihren _noun4plural/ fragt, 
-  nach der _nounsingulargenitivfem/ ihrer _genitivnounplural/ und wie man sie zusammenbrachte, 
-  dem will ich, ohne lange nachzudenken, alles so _verbinfinitiv/, wie es _artikel/ _nounsingular/ berichtet."""
-  
-  
